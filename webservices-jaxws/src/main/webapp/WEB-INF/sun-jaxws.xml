@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints
+  xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+  version="2.0"> 
+  
+  <endpoint name="HelloWorldSWImp" 
+  				implementation="com.ipartek.formacion.ws.HelloWorldSWImp"
+  				url-pattern="/helloworldws"/>
+
+  <endpoint name="cochews" 
+  				implementation="com.ipartek.formacion.ws.CocheServiceWSImp"
+  				url-pattern="/cochews"/> 
+  				
+   <endpoint name="alumnows" 
+  				implementation="com.ipartek.formacion.ws.AlumnoServiceWSImp"
+  				url-pattern="/alumnows"/>   				 				
+  
+</endpoints>
