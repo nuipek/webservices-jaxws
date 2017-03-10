@@ -26,7 +26,7 @@
     <servlet-name>cochews</servlet-name>
     <url-pattern>/cochews</url-pattern>
   </servlet-mapping>
-      <servlet>
+  <servlet>
     <servlet-name>alumnows</servlet-name>
     <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
@@ -34,6 +34,15 @@
   <servlet-mapping>
     <servlet-name>alumnows</servlet-name>
     <url-pattern>/alumnows</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>peliculasws</servlet-name>
+    <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>peliculasws</servlet-name>
+    <url-pattern>/peliculasws</url-pattern>
   </servlet-mapping>
   
 </web-app>

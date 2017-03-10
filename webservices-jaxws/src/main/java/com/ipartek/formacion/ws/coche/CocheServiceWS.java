@@ -1,4 +1,4 @@
-package com.ipartek.formacion.ws;
+package com.ipartek.formacion.ws.coche;
 
 /**
  *  Si el estilo del soap es document el WSDL se tiene que generar y hacen falta todas las 

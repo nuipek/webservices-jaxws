@@ -1,4 +1,4 @@
-package com.ipartek.formacion.ws;
+package com.ipartek.formacion.ws.alumno;
 
 import java.util.ArrayList;
 import java.util.Collection;

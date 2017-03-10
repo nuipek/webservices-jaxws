@@ -1,6 +1,6 @@
 package com.ipartek.formacion.service;
 
-import com.ipartek.formacion.ws.AlumnoColeccion;
+import com.ipartek.formacion.ws.alumno.AlumnoColeccion;
 
 public interface AlumnoService {
 

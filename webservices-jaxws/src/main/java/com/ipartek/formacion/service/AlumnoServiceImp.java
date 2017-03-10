@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.formacion.pojo.Alumno;
-import com.ipartek.formacion.ws.AlumnoColeccion;
+import com.ipartek.formacion.ws.alumno.AlumnoColeccion;
 
 public class AlumnoServiceImp implements AlumnoService {
 
