@@ -23,6 +23,58 @@ public class PeliculasServiceWSImp {
 	@Resource
 	WebServiceContext webServiceContext;
 	
+	@WebMethod(operationName="obtenertodos")
+	public PeliculaColeccionMensaje getAll(){
+	    PeliculaColeccionMensaje pcm = new PeliculaColeccionMensaje();
+	    
+	    if (validarSolicitud())
+	    {
+	    	
+	    	// Procesamos la solicitud
+	    	PeliculaService pS = new PeliculaServiceImp();
+	    	PeliculaColeccion pC = new PeliculaColeccion();
+	    	pC.setPeliculas(pS.getAll());
+	    	pcm.setPeliculas(pC);
+	    	
+	    }
+	    else{
+	    	pcm.setMensaje("No se cumple los requisitos de la solicitud");
+	    }
+	    
+		return pcm;
+	}
+	
+	
+	
+	private boolean validarSolicitud() {
+		boolean valida = false;
+		// WS-Security
+		MessageContext contextoMensajes = webServiceContext.getMessageContext();
+		Map<?,?> encabezados = (Map<?, ?>) contextoMensajes.get(MessageContext.HTTP_REQUEST_HEADERS);
+		// El nombre del atributo de "encabezados" se llama asi porque asi se decide 
+		// es una lista pq asi lo decidimos y en el cliente tambien se envia una lista 
+		List<?> listparameteruser = (List)encabezados.get("user");
+		List<?> listparameterpass = (List)encabezados.get("pass");
+		//cogemos un identificador
+		final String user = "root";
+		final String password = "saparicio";
+		
+		if (listparameteruser != null && listparameterpass != null){
+			// Aqui hariamos cualquier validacion compleja
+			if (user.equals(listparameteruser.get(0).toString())
+				&&	
+				password.equals(listparameterpass.get(0).toString())){
+				valida = true;
+			}
+			
+		}
+		
+		return valida;
+		
+	}
+
+
+
 	@WebMethod(operationName="obtenerporid")
 	public PeliculaMensaje getById(int codigo){
 		

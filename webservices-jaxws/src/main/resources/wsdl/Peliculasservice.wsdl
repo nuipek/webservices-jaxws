@@ -8,6 +8,10 @@
 
       <xs:element name="obtenerporidResponse" type="tns:obtenerporidResponse"/>
 
+      <xs:element name="obtenertodos" type="tns:obtenertodos"/>
+
+      <xs:element name="obtenertodosResponse" type="tns:obtenertodosResponse"/>
+
       <xs:complexType name="obtenerporid">
         <xs:sequence>
           <xs:element name="arg0" type="xs:int"/>
@@ -41,8 +45,37 @@
           <xs:element name="nombre" type="xs:string" minOccurs="0"/>
         </xs:sequence>
       </xs:complexType>
+
+      <xs:complexType name="obtenertodos">
+        <xs:sequence/>
+      </xs:complexType>
+
+      <xs:complexType name="obtenertodosResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:peliculaColeccionMensaje" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="peliculaColeccionMensaje">
+        <xs:sequence>
+          <xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+          <xs:element name="peliculas" type="tns:peliculaColeccion" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="peliculaColeccion">
+        <xs:sequence>
+          <xs:element name="peliculas" type="tns:pelicula" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
 </xs:schema>
   </types>
+  <message name="obtenertodos">
+    <part name="parameters" element="tns:obtenertodos"/>
+  </message>
+  <message name="obtenertodosResponse">
+    <part name="parameters" element="tns:obtenertodosResponse"/>
+  </message>
   <message name="obtenerporid">
     <part name="parameters" element="tns:obtenerporid"/>
   </message>
@@ -50,6 +83,10 @@
     <part name="parameters" element="tns:obtenerporidResponse"/>
   </message>
   <portType name="PeliculasServiceWSImp">
+    <operation name="obtenertodos">
+      <input wsam:Action="http://com.ipartek.formacion/types/PeliculasServiceWSImp/obtenertodosRequest" message="tns:obtenertodos"/>
+      <output wsam:Action="http://com.ipartek.formacion/types/PeliculasServiceWSImp/obtenertodosResponse" message="tns:obtenertodosResponse"/>
+    </operation>
     <operation name="obtenerporid">
       <input wsam:Action="http://com.ipartek.formacion/types/PeliculasServiceWSImp/obtenerporidRequest" message="tns:obtenerporid"/>
       <output wsam:Action="http://com.ipartek.formacion/types/PeliculasServiceWSImp/obtenerporidResponse" message="tns:obtenerporidResponse"/>
@@ -57,6 +94,15 @@
   </portType>
   <binding name="PeliculasServiceWSImpPortBinding" type="tns:PeliculasServiceWSImp">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="obtenertodos">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
     <operation name="obtenerporid">
       <soap:operation soapAction=""/>
       <input>
